@@ -14,14 +14,24 @@ function App() {
   
 
   const [ searchTerm, setSearchTerm ] = useState("")
-  const [filterItem, setFilterItem] = useState(false)
+  const [filterItemABV, setFilterItemABV] = useState(false)
+  const [filterItemClassic, setFilterItemClassic] = useState(false)
+  const [filterItemPh, setFilterItemPh] = useState(false)
 
   const handleSearchTerm = (word) => {
     setSearchTerm(word)
   }
 
-  const handleFilterItem = () => {
-    setFilterItem(!filterItem)
+  const handleFilterItemABV = () => {
+    setFilterItemABV(!filterItemABV)
+  }
+
+  const handleFilterItemClassic = () => {
+    setFilterItemClassic(!filterItemClassic)
+  }
+
+  const handleFilterItemPh = () => {
+    setFilterItemPh(!filterItemPh)
   }
 
   const getBeers = () => {
@@ -44,8 +54,8 @@ function App() {
     
     <div>
       <Search handleSearchTerm = {handleSearchTerm} />
-      <Filter handleFilterItem = {handleFilterItem}/>
-      <BeerDisplay beers={beers} searchTerm = {searchTerm} filterItem = {filterItem}/>
+      <Filter handleFilterItemABV = {handleFilterItemABV} handleFilterItemClassic = {handleFilterItemClassic} handleFilterItemPh = {handleFilterItemPh}/>
+      <BeerDisplay beers={beers} searchTerm = {searchTerm} filterItemABV = {filterItemABV} filterItemClassic = {filterItemClassic} filterItemPh = {filterItemPh}/>
       
     </div>
   );
