@@ -5,15 +5,23 @@ import BeerTiles from './Components/BeerTiles/BeerTiles';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import BeerDisplay from './Components/BeerDisplay/BeerDisplay';
 import Search from './Components/Search/Search';
+import Filter from './Components/Filter/Filter';
 
 
 function App() {
   const [count, setCount] = useState(0)
   const [beers, setBeers] = useState([])
+  
+
   const [ searchTerm, setSearchTerm ] = useState("")
+  const [filterItem, setFilterItem] = useState(false)
 
   const handleSearchTerm = (word) => {
     setSearchTerm(word)
+  }
+
+  const handleFilterItem = () => {
+    setFilterItem(!filterItem)
   }
 
   const getBeers = () => {
@@ -22,10 +30,12 @@ function App() {
     .then((response) => {setBeers(response)})
     
   }
+
   
   useEffect(()=>{
     
     getBeers()
+   
     
   }, [])
 
@@ -34,7 +44,9 @@ function App() {
     
     <div>
       <Search handleSearchTerm = {handleSearchTerm} />
-      <BeerDisplay beers={beers} searchTerm = {searchTerm}/>
+      <Filter handleFilterItem = {handleFilterItem}/>
+      <BeerDisplay beers={beers} searchTerm = {searchTerm} filterItem = {filterItem}/>
+      
     </div>
   );
 }

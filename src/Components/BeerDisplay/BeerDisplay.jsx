@@ -4,15 +4,10 @@ import BeerTiles from '../BeerTiles/BeerTiles'
 
 
 const BeerDisplay = (props) => {
-    const {beers, searchTerm} = props;
+    const {beers, searchTerm, filterItem} = props;
 
    const filteredBeers = beers.filter((beer)=> { 
-       if(searchTerm == ""){
-        return true
-       }
-       else{
-        return beer.name.toLowerCase().includes(searchTerm.toLowerCase())
-       }
+       return((searchTerm ? beer.name.toLowerCase().includes(searchTerm) : true) && (filterItem ? (beer.abv > 6) : true)) 
     })
     const beerShow = filteredBeers.map((beer, index)=> {
         return <BeerTiles name={beer.name} image_url={beer.image_url}/>
