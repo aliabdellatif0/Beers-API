@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import BeerDisplay from './Components/BeerDisplay/BeerDisplay';
 import Search from './Components/Search/Search';
 import Filter from './Components/Filter/Filter';
+import "./App.css"
 
 
 function App() {
@@ -52,11 +53,14 @@ function App() {
   console.log(beers)
   return (
     
-    <div>
+    <div className="main-grid">
+      <div className="main-grid__item">
       <Search handleSearchTerm = {handleSearchTerm} />
       <Filter handleFilterItemABV = {handleFilterItemABV} handleFilterItemClassic = {handleFilterItemClassic} handleFilterItemPh = {handleFilterItemPh}/>
+      </div>
+      <div>
       <BeerDisplay beers={beers} searchTerm = {searchTerm} filterItemABV = {filterItemABV} filterItemClassic = {filterItemClassic} filterItemPh = {filterItemPh}/>
-      
+      </div>
     </div>
   );
 }
