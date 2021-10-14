@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import BeerDisplay from './Components/BeerDisplay/BeerDisplay';
 import Search from './Components/Search/Search';
 import Filter from './Components/Filter/Filter';
+import logo from './assets/images/logo.png'
 import "./App.css"
 
 
@@ -52,7 +53,8 @@ function App() {
 
   console.log(beers)
   return (
-    
+    <>
+    <img src={logo}/>
     <div className="main-grid">
       <div className="main-grid__item">
       <Search handleSearchTerm = {handleSearchTerm} />
@@ -62,6 +64,7 @@ function App() {
       <BeerDisplay beers={beers} searchTerm = {searchTerm} filterItemABV = {filterItemABV} filterItemClassic = {filterItemClassic} filterItemPh = {filterItemPh}/>
       </div>
     </div>
+    </>
   );
 }
 
